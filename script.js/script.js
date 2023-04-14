@@ -105,7 +105,33 @@ function arr(a) {
 }
 console.log(arr([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 
-console.log("<p>Седьмое задание</p>");
+// console.log("<p>Седьмое задание</p>");   // ++
+
+function pyramid() {
+  console.log("<p>Седьмое задание</p>");
+  let a;
+  while (true) {
+    a = +prompt(`Введите число`, 5);
+    if (Number.isNaN(a)) {
+      alert("Это не число!");
+    } else {
+      break;
+    }
+  }
+  let b = prompt(`Введите символ`, '*');
+  pyr(a, b)
+  function pyr(a, b) {
+    for (let i = 1; i <= a; i++) {
+      if (b[0] == undefined) {
+        console.log((String(i)).repeat(i));
+      } else {
+        console.log(b.repeat(i));
+      }
+    }
+    return;
+  }
+  return;
+}
 
 // console.log("<p>Восьмое задание</p>");    //++
 function spruce() {
@@ -181,22 +207,77 @@ function arr3() {
 arr3();
 console.log("<p>Двенадцатое задание</p>");
 function homeWork() {
-  let name = prompt("Введите ваше имя");
-  let family = prompt("Введите вашу фамилию");
-  let surname = prompt("Введите ваше отчество");
-  let group = prompt("Введите номер вашей группы");
+  let name = prompt("Введите ваше имя", 'Иван');
+  let family = prompt("Введите вашу фамилию", 'Иванов');
+  let surname = prompt("Введите ваше отчество", 'Иванович');
+  let group = prompt("Введите номер вашей группы", '123');
   let symbol = "*";
 
-  let first = symbol + " " + `Домашняя работа: "Функции"` + " " + symbol;
-  let second =
-    symbol + " " + `Выполнил: студент гр.` + " " + group + " " + symbol;
-  let lost = symbol + " " + family + " " + name + " " + surname + " " + symbol;
+  let first = `Домашняя работа: "Функции"`;
+  let second = `Выполнил: студент гр.` + " " + group;
+  let lost = family + " " + name + " " + surname;
 
   let max1 = Math.max(first.length, second.length, lost.length);
-  console.log(symbol.repeat(max1));
-  console.log(first);
-  console.log(second);
-  console.log(lost);
-  console.log(symbol.repeat(max1));
+  first = first + (' '.repeat(max1 - first.length));
+  second = second + (' '.repeat(max1 - second.length));
+  lost = lost + (' '.repeat(max1 - lost.length))
+  console.log(symbol.repeat(lost.length + 4));
+  console.log(symbol + ' ' + first + ' ' + symbol);
+  console.log(symbol + ' ' + second + ' ' + symbol);
+  console.log(symbol + ' ' + lost + ' ' + symbol);
+  console.log(symbol.repeat(lost.length + 4));
 }
 // document.write("<p>Тринадцатое задание</p>")
+
+function email() {
+  let b = 'абвгдежзийклмнопрстуфхцчшщыэюъья'
+  let b2 = 'abcdefghijklmnopqrstuvwxyz'
+
+  while (true) {
+    let a1 = prompt(`Введите электронную почту`, `eяmail@gmail.com`)
+    let a = a1.toLowerCase()
+    let dog = a.indexOf('@')
+
+    // for (i = 0; i < )
+
+    if (a.indexOf('@') != a.lastIndexOf('@')) {
+      alert('Введен не корректный адрес! 2');
+      continue;
+    } else {
+      if ((a.slice(0, dog)).length < 2) {
+        alert('Введен не корректный адрес! 3');
+        continue;
+      } else {
+        if (Number.isInteger(a[0]) || a[0] == '.' || Number.isInteger(a[dog - 1]) || a[dog - 1] == '.') {
+          alert('Введен не корректный адрес! 4');
+          continue;
+        } else {
+          if (((a.slice(a.lastIndexOf('.') + 1)).length) < 2 || (((a.slice(a.lastIndexOf('.') + 1)).length) > 11)) {
+            alert('Введен не корректный адрес! 5');
+            continue;
+          } else {
+            Flag = true;
+            for (i = 0; i < a.length; i++) {
+              if (b.indexOf(a[i]) != (-1)) {
+                Flag = false;
+              }
+            }
+            if (Flag == false) {
+              alert('Введен не корректный адрес! 1');
+              continue;
+            } else {
+              if (b2.indexOf(a[dog - 1] == -1) || b2.indexOf(a[dog + 1] == -1)) {
+                alert('Введен не корректный адрес! 6');
+                continue;
+              } else { return alert(`Спасибо, ваш адрес принят`) }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+let a5 = '%'
+console.log(typeof a5[0])
